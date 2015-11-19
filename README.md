@@ -7,32 +7,32 @@
 
 Можно проследить за ходом вебинара, переключаясь по истории коммитов.
 
-### Конвертация html в bemjson
+#### Конвертация html в bemjson
 
 ```
-git co 01858dd
+git checkout 01858dd
 ```
 
-### Дотюним сборку
+#### Дотюним сборку
 
 ```
-git co eef7256
+git checkout eef7256
 ```
 
-### Вычисления во время компиляции в BEMJSON
+#### Вычисления во время компиляции в BEMJSON
 
 ```
-git co 51ec219
+git checkout 51ec219
 ```
 
-## BEMHTML-шаблоны
+#### BEMHTML-шаблоны
 
 ```
-git co 1ae4c50
+git checkout 1ae4c50
 ```
 
-## Некоторые интересные возможности BEMHTML
+#### Некоторые интересные возможности BEMHTML
 
 ```
-git co f113aed
+git checkout f113aed
 ```
