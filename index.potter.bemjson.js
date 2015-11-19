@@ -42,14 +42,35 @@
                                     attrs: {
                                         href: '#'
                                     },
-                                    content: 'Полный БЭМ'
+                                    /**
+                                     * Условная логика
+                                     */
+                                    content: (function() {
+                                        var res = ['Hello '];
+
+                                        if (Math.random() > 0.5) {
+                                            res.push('BEM');
+                                        } else {
+                                            res.push('world');
+                                        }
+
+                                        return res;
+                                    }())
                                 }
                             },
                             {
                                 block: 'menu',
                                 tag: 'ul',
+                                /**
+                                 * Мапинг одного массива на другой:
+                                 * аналогично foreach в классических шаблонизаторах
+                                 */
                                 content: [
-                                    {
+                                    { url: '#', content: 'О методологии' },
+                                    { url: '#', content: 'Узнать больше' },
+                                    { url: 'http://bem.info', content: 'bem.info' }
+                                ].map(function(item) {
+                                    return {
                                         elem: 'item',
                                         tag: 'li',
                                         content: {
@@ -60,44 +81,12 @@
                                             },
                                             tag: 'a',
                                             attrs: {
-                                                href: '#'
+                                                href: item.url
                                             },
-                                            content: 'О методологии'
+                                            content: item.content
                                         }
-                                    },
-                                    {
-                                        elem: 'item',
-                                        tag: 'li',
-                                        content: {
-                                            block: 'menu',
-                                            elem: 'link',
-                                            mix: {
-                                                block: 'link'
-                                            },
-                                            tag: 'a',
-                                            attrs: {
-                                                href: '#'
-                                            },
-                                            content: 'Узнать больше'
-                                        }
-                                    },
-                                    {
-                                        elem: 'item',
-                                        tag: 'li',
-                                        content: {
-                                            block: 'menu',
-                                            elem: 'link',
-                                            mix: {
-                                                block: 'link'
-                                            },
-                                            tag: 'a',
-                                            attrs: {
-                                                href: 'https://ru.bem.info'
-                                            },
-                                            content: 'bem.info'
-                                        }
-                                    }
-                                ]
+                                    };
+                                })
                             }
                         ]
                     },
@@ -111,7 +100,10 @@
                                         block: 'headline',
                                         elem: 'header',
                                         tag: 'h2',
-                                        content: 'Методология БЭМ'
+                                        /**
+                                         * Таймстемп момента компиляции
+                                         */
+                                        content: Date.now()
                                     },
                                     {
                                         block: 'countdown',
