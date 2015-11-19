@@ -17,6 +17,7 @@
     "gulp-concat": "^2.5.2",
     "gulp-css-url-adjuster": "^0.2.3",
     "gulp-rename": "^1.2.2",
+    "html2bemjson": "^1.9.0",
     "html2bl": "git://github.com/dab/html2bl.git"
   },
   "dependencies": {
