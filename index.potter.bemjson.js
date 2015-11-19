@@ -11,7 +11,6 @@
                     block: 'logo',
                     content: {
                         block: 'link',
-                        url: '#',
                         /**
                          * Условная логика
                          */
