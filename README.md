@@ -28,11 +28,11 @@ git checkout 51ec219
 #### BEMHTML-шаблоны
 
 ```
-git checkout 1ae4c50
+git checkout 17d9a63
 ```
 
 #### Некоторые интересные возможности BEMHTML
 
 ```
-git checkout f113aed
+git checkout bad312f
 ```
