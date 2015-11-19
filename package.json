@@ -22,6 +22,9 @@
   },
   "dependencies": {
     "autoprefixer-core": "^5.2.1",
-    "gulp-postcss": "^5.1.9"
+    "bemjson2bl": "^1.0.3",
+    "gulp-bemjson2html": "^1.0.2",
+    "gulp-postcss": "^5.1.9",
+    "gulp-watch": "^4.3.5"
   }
 }

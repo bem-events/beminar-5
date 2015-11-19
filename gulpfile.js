@@ -6,14 +6,17 @@ var gulp = require('gulp'),
     path = require('path'),
     url = require('gulp-css-url-adjuster'),
     autoprefixer = require('autoprefixer-core'),
-    postcss = require('gulp-postcss');
+    watch = require('gulp-watch'),
+    postcss = require('gulp-postcss'),
+    bemjson2html = require('gulp-bemjson2html');
 
 var params = {
     out: 'public/',
-    htmlSrc: 'index.potter.html',
+    bemhtmlSrc: 'index.potter.bemhtml.js',
+    bemjsonSrc: 'index.potter.bemjson.js',
     levels: ['common.blocks', 'potter.blocks']
 },
-    getFileNames = require('html2bl').getFileNames(params);
+    getFileNames = require('bemjson2bl').getFileNames(params);
 
 gulp.task('default', ['server', 'build']);
 
@@ -24,25 +27,45 @@ gulp.task('server', function() {
         server: params.out
     });
 
-    gulp.watch('*.html', ['html']);
+    gulp.watch('*.bemjson.js', ['html']);
 
-    gulp.watch(params.levels.map(function(level) {
-        var cssGlob = level + '/**/*.css';
-        return cssGlob;
-    }), ['css']);
+    watch(params.levels.map(function(level) {
+        return level + '/**/*.bemhtml.js';
+    }), function() {
+        gulp.start('html');
+    });
 
-    gulp.watch(params.levels.map(function(level) {
-        var jsGlob = level + '/**/*.js';
-        return jsGlob;
-    }), ['js']);
+    watch(params.levels.map(function(level) {
+        return level + '/**/*.css';
+    }), function() {
+        gulp.start('css');
+    });
 
+    watch(params.levels.map(function(level) {
+        return level + '/**/*.js';
+    }).concat('!*.blocks/**/*.bemhtml.js'), function() {
+        gulp.start('js');
+    });
 });
 
-gulp.task('html', function() {
-    gulp.src(params.htmlSrc)
-    .pipe(rename('index.html'))
-    .pipe(gulp.dest(params.out))
-    .pipe(reload({ stream: true }));
+gulp.task('html', ['bemhtml'], function() {
+    return gulp.src(params.bemjsonSrc)
+        .pipe(bemjson2html({ template: params.bemhtmlSrc }))
+        .pipe(rename('index.html'))
+        .pipe(gulp.dest(params.out))
+        .pipe(reload({ stream: true }));
+});
+
+gulp.task('bemhtml', function(done) {
+    getFileNames.then(function(src) {
+        gulp.src(src.dirs.map(function(dirName) {
+            return path.resolve(dirName) + '/*.bemhtml.js';
+        }))
+        .pipe(concat(params.bemhtmlSrc))
+        .pipe(gulp.dest('./'))
+        .on('end', done);
+    })
+    .done()
 });
 
 gulp.task('css', function() {
@@ -75,9 +98,8 @@ gulp.task('js', function() {
     getFileNames.then(function(src) {
         return src.dirs.map(function(dirName) {
             var jsGlob = path.resolve(dirName) + '/*.js';
-            console.log(jsGlob);
             return jsGlob;
-        });
+        }).concat('!*.blocks/**/*.bemhtml.js');
     })
         .then(function(jsGlobs) {
             console.log(jsGlobs);
