@@ -7,18 +7,23 @@
     font-size: 23px;
     font-family: Helvetica, sans-serif;
 }
+
 .countdown__days:after {
     content: ' д.'
 }
+
 .countdown__hrs, .countdown__secs {
     margin: 0 10px;
 }
+
 .countdown__hrs:after {
     content: ' ч.'
 }
+
 .countdown__mins:after {
     content: ' м.'
 }
+
 .countdown__secs:after {
     content: ' c.'
 }

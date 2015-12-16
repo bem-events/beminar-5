@@ -2,3 +2,4 @@ node_modules
 public
 *.bemhtml.js
 !**/*.bemhtml.js
+index.*.bemhtml.js

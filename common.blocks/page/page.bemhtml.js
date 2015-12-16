@@ -72,5 +72,5 @@ block('page').replace()(function() {
                 }
             ]
         }
-    ]
-})
+    ];
+});

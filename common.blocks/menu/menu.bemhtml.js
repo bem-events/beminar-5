@@ -33,8 +33,8 @@ block('menu')(
             };
         });
     })
-)
+);
 
 block('menu').elem('item')(
     tag()('li')
-)
+);

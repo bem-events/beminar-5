@@ -4,7 +4,7 @@ block('link')(
     attrs()(function() {
         return { href: this.ctx.url };
     })
-)
+);
 
 /**
  * В данном случае мы считаем, что у всех ссылок url есть по умолчанию,
@@ -15,4 +15,4 @@ block('link')(
  */
 block('link').match(function() { return !this.ctx.url })(
     tag()('span')
-)
+);
