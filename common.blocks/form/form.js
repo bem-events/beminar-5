@@ -1,6 +1,13 @@
-$('.form').on('submit', function(e) {
-    e.preventDefault();
-    $('.form__popup', this)[
-        !/\S+@\S+\.\S+/.test($('.form__input_type_email', this).val()) ? 'addClass' : 'removeClass'
-    ]('form__popup_visible');
+modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
+
+provide(BEMDOM.decl(this.name, {}, {
+    live: function() {
+        this.liveBindTo('submit', function(e) {
+            e.preventDefault();
+            var input = this.elem('input', 'type', 'email');
+            this.setMod(this.elem('popup'), 'visible', !/\S+@\S+\.\S+/.test(input.val()));
+        });
+    }
+}));
+
 });

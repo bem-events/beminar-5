@@ -2,7 +2,7 @@
     block: 'page',
     title: 'БЭМ — будущее фронтенд разработки',
     styles: ['styles.css'],
-    scripts: ['http://yastatic.net/jquery/2.1.4/jquery.min.js', 'app.js'],
+    scripts: ['https://yastatic.net/bem-core/latest/desktop/bem-core.js+bemhtml.js', 'app.js'],
     content: [
         {
             block: 'header',
@@ -58,8 +58,8 @@
                                 block: 'headline',
                                 elem: 'countdown'
                             },
-                            attrs: {
-                                'data-countdown': '23 july 2015 23:59'
+                            js: {
+                                countdown: '01 jan 2016 00:00'
                             },
                             content: [
                                 {
@@ -82,8 +82,8 @@
                         },
                         {
                             block: 'countdown',
-                            attrs: {
-                                'data-countdown': '14 july 2015 23:59'
+                            js: {
+                                countdown: '7 jan 2016 00:00'
                             },
                             content: [
                                 {
@@ -106,8 +106,8 @@
                         },
                         {
                             block: 'countdown',
-                            attrs: {
-                                'data-countdown': '14 august 2015 23:59'
+                            js: {
+                                countdown: '8 mar 2016 00:00'
                             },
                             content: [
                                 {
@@ -170,6 +170,7 @@
                 },
                 {
                     block: 'form',
+                    js: true,
                     mix: {
                         block: 'headline',
                         elem: 'form'
