@@ -1,38 +1,6 @@
-## Вебинар по БЭМ: декларативные шаблоны
+## Вебинар по БЭМ: i-bem.js
 
-Видео будет на сайте [bem.info](https://ru.bem.info/events/beminar-november-2015/)
-Следите за обновлениями в twitter @bem_ru
+[Видео](http://www.youtube.com/watch?v=OBjKCY3TiJg)
 
-[Слайды](http://vitkarpov.com/beminar-4-slides/)
-
-Можно проследить за ходом вебинара, переключаясь по истории коммитов.
-
-#### Конвертация html в bemjson
-
-```
-git checkout 01858dd
-```
-
-#### Дотюним сборку
-
-```
-git checkout eef7256
-```
-
-#### Вычисления во время компиляции в BEMJSON
-
-```
-git checkout 51ec219
-```
-
-#### BEMHTML-шаблоны
-
-```
-git checkout 17d9a63
-```
-
-#### Некоторые интересные возможности BEMHTML
-
-```
-git checkout bad312f
-```
+В рамках этого БЭМинара мы смигрировали проект с jQuery на i-bem.js.
+Посмотреть на изменения можно в этом коммите: https://github.com/bem-events/beminar-5/commit/b1c58083ccc789c7b8b7e33e2e763ff2546eb375
